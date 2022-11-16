@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include "data.h"
+#include "data.h"	// default savefile
 #include "bit_file.h"
 
 int readSave(){
-	FILE *f1 = fopen("bitten.sav", "rb");
-	if (f1!=NULL){return 0;}
+	FILE *f1 = fopen("bitten.sav", "rb"); // open in binary mode
+	if (f1!=NULL){return 0;} // dont write default data to file that already exsits
 	f1 = fopen("bitten.sav", "wb");
 	printf("save data that is being created\n");
 	printf("%s", saveD);
