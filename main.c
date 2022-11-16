@@ -4,11 +4,13 @@
 #include "data.h"
 
 int main(){
-	FILE *f1 = fopen("test1.zip", "wb");
-	printf("data that is being created");
-	printf(data);
+	FILE *f1 = fopen("bitten.sav", "rb");
+	if (f1!=NULL){return 0;}
+	f1 = fopen("bitten.sav", "wb");
+	printf("save data that is being created\n");
+	printf("%s", saveD);
 	printf("\n");
-	fwrite(data, sizeof(char), sizeof(data), f1);
+	fwrite(saveD, sizeof(char), sizeof(saveD), f1);
 	fclose(f1);
-	return;
+	return 0;
 }
