@@ -7,7 +7,7 @@
 
 int readSave(){
 	FILE *f1 = fopen("bitten.sav", "rb"); // open in binary mode
-	char buffer[];
+	unsigned char* buffer;
 	long saveSize;
 	if (f1!=NULL){
 		fseek(f1, 0L, SEEK_END);
@@ -27,7 +27,7 @@ int readSave(){
 			return 1;
 		}
 		// read and printout the data
-		printf("Version of game saved: %c", buffer[1]);
+		printf("Version of game saved: %i\n", buffer[10]);
 		// free memory
 		fclose(f1);
 		free(buffer);
