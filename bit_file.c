@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include "data.h"	// default savefile
+#include "defaultSave.h"	// default savefile
 #include "bit_file.h"
+
+int parseSave(FILE* save);
 
 int readSave(){
 	FILE *f1 = fopen("bitten.sav", "rb"); // open in binary mode
@@ -14,4 +16,10 @@ int readSave(){
 	fwrite(saveD, sizeof(char), sizeof(saveD), f1);
 	fclose(f1);
 	return 0;
+}
+#define VERSION 0x01
+// where the magic happens
+int parseSave(FILE* save)
+{
+	
 }
