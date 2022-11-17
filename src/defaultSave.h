@@ -1,3 +1,4 @@
+/*
 MIT License
 
 Copyright (c) 2022 bitten2up
@@ -19,3 +20,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+*/
+
+unsigned char saveD[] = {
+  'b', 'i', 't', 't', 'e', 'n', 's', 'a', 'v', 0xc4, // header
+  0x01, // version
+  0b100000, // first value: music, second value: fuloscreen
+  0x0a
+};
+unsigned int saveDlen = 13;
