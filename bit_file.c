@@ -5,7 +5,9 @@
 #include "bit_file.h"
 #define VERSION 0x01
 
-int readSave(){
+void writeSave();
+int readSave()
+{
 	FILE *f1 = fopen("bitten.sav", "rb"); // open in binary mode
 	char* buffer;
 	long saveSize;
@@ -30,6 +32,11 @@ int readSave(){
 		printf("header:\n");
 		for (int i=0; i<9; i++)
 		{
+			if (buffer[i] != saveD[i])
+			{
+				printf("header mismatch");
+				writeSave();
+			}
 			printf("%c",buffer[i]);
 		}
 		printf("\n");
@@ -38,14 +45,17 @@ int readSave(){
 		fclose(f1);
 		free(buffer);
 	} // dont write default data to file that already exsits
-	else
-	{
-		f1 = fopen("bitten.sav", "wb");
-		printf("save data that is being created\n");
-		printf("%s", saveD);
-		printf("\n");
-		fwrite(saveD, sizeof(char), sizeof(saveD), f1);
+	else {
 		fclose(f1);
-	}
+		writeSave();
 	return 0;
+}
+void writeSave()
+{
+	FILE* f1 = fopen("bitten.sav", "wb");
+	printf("save data that is being created\n");
+	printf("%s", saveD);
+	fwrite(saveD, sizeof(char), sizeof(saveD), f1);
+	fclose(f1);
+	return;
 }
